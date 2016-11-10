@@ -38,7 +38,20 @@ insert into alunos (nome, data_nasc, time )
               ("GABRIELY","1999-03-10","FLUMINENSE"),("ITAMAR","1998-03-12","FLUMINENSE"),("JOAO MARCOS","1999-03-01","FLAMENGO"),
               ("JOAO P. TEIXEIRA","1999-01-11","VASCO"),("JOAO P. MUNIZ","1997-06-16","FLAMENGO"),("JOAO VICTOR","1997-04-07","PALMEIRAS"),
               ("MAURICIO","1997-09-09","PALMEIRAS"),("YOURI","1999-04-10","FLAMENGO");
-       
+
+-- exibir dados dos detalhes de alunos
+select alunos.nome as Nome, 
+       detalhe_alunos.celular as Celular,
+       detalhe_alunos.email as Email, 
+       detalhe_alunos.facebook as Facebook,
+       alunos.time Time
+from alunos,detalhe_alunos where alunos.codigo=detalhe_alunos.codigo_aluno;
+
+-- exibir dados dos detalhes dos alunos usando inner join (o "as" pode ser suprimido)
+select a.nome Nome, d.celular Celular, d.email Email, d.facebook Facebook, a.time Time
+from alunos a inner join detalhe_alunos d
+on a.codigo = d.codigo_aluno;
+
 -- Mostrar a idade dos alunos
 select nome,  year(now() ) - year(data_nasc) as idade from alunos;
 
