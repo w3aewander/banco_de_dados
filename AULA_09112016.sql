@@ -61,5 +61,9 @@ select  nome as aluno, year(data_nascimento) as ano from alunos group by  ano;
 select  nome as aluno, mounth(data_nascimento) as mes from alunos group by  mes;
 
 -- Agrupar apenas alunos que torcem para um time especifico
-select count(*) as qtde, time from alunos group by time having time = "flamengo";
+select count(*) as qtde, time from alunos group by time having time = "fluminense";
+
+-- Exibir alunos agrupando pelos que torcem para um time especifico
+select nome, time from alunos group by nome,time having time = "fluminense";
+select nome, time from alunos group by nome,time having time in ("flamengo","fluminense");
 
