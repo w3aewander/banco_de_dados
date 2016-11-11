@@ -1,5 +1,6 @@
 /*
    JOIN , INNER JOIN, RIGHT JOIN, LEFT JOIN, FULL OUTER JOIN
+   Professor: Wanderlei Silva do Carmo
 */
 
 -- DROPAR O BANCO SE EXISTIR
