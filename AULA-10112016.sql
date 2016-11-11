@@ -78,6 +78,25 @@ where alunos.cod_curso = cursos.codigo;
  RIGHT OUTER join  cursos c
  on a.cod_curso = c.codigo;
 
+-- simular um full join
+ -- simular um full outer join
+ -- union all
+ select a.codigo,a.nome,c.nome  from alunos a 
+ left join cursos c
+ on a.cod_curso = c.codigo
+ union all
+ select a.codigo,a.nome, c.nome from alunos a
+ right  join cursos c
+ on a.cod_curso = c.codigo;
+ 
+ -- union distinct
+ select a.codigo,a.nome,c.nome  from alunos a 
+ left join cursos c
+ on a.cod_curso = c.codigo
+ union distinct
+ select a.codigo,a.nome, c.nome from alunos a
+ right  join cursos c
+ on a.cod_curso = c.codigo;
  
  
  -- AO FINAL DO EXERCICIO DROP O BANCO
