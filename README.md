@@ -1,2 +1,2 @@
 # banco_de_dados
-Script SQL - didáticos
+Scripts SQL didáticos
