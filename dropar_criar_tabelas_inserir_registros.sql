@@ -52,7 +52,12 @@ insert into vendedor values ( 1,"Vendedor 1",1),
                             ( 3,"Vendedor 1",2),
 							( 4,"Vendedor 2",2);
                             
-insert into produto values (10,"produto 1","Kg","150.00"),(20,"produto 2","Kg","50.00"),(30,"produto 3","Kg","10.80"),(40,"produto 4","Kg","90.00"),(50,"produto 5","Kg","32.00");
+insert into produto values (10,"produto 1","Kg","150.00"),
+                           (20,"produto 2","Kg","50.00"),
+                           (30,"produto 3","Kg","10.80"),
+			   (40,"produto 4","Kg","90.00"),
+			   (50,"produto 5","Kg","32.00");
+			   
 insert into venda values ( 1,'2016-10-02 10:20:30',10,1,1),
                          ( 2,'2016-10-12 08:10:30',10,2,1),
                          ( 3,'2016-10-20 18:00:10',20,2,2),
