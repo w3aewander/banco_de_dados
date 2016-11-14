@@ -24,7 +24,7 @@ call db_loja.sp_detalhe_produto(10);
 drop function if exists calcular_total;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` 
-FUNCTION `calcular_total`(qtde double, valor double) RETURNS double
+FUNCTION `calcular_total`(qtde double, valor decimal(8,2)) RETURNS decimal(8,2)
 BEGIN
 
 RETURN qtde * valor;
@@ -49,7 +49,14 @@ create table venda (
    primary key (codigo) );
 
 drop trigger if exists tr_calc_valor_ao_inserir;   
+drop trigger if exists tr_calc_valor_ao_atualizar;   
+
 CREATE TRIGGER tr_calc_valor_ao_inserir BEFORE INSERT 
+ON venda
+for each ROW
+set NEW.valor_total = NEW.valor_unitario * NEW.qtde;
+
+CREATE TRIGGER tr_calc_valor_ao_atualizar BEFORE UPDATE 
 ON venda
 for each ROW
 set NEW.valor_total = NEW.valor_unitario * NEW.qtde;
@@ -59,4 +66,12 @@ insert into venda (descricao, valor_unitario, qtde)
                                ("cerveja skol 300ml", 4.20,5),
 							   ("Self service", 42.90, 0.560 );
                                
-select * from venda;                               
+ -- ao atualizar recalcula o valor_total
+ update venda set qtde = 10 where descricao = "coca cola 2 litros";
+ 
+ -- ao atualizar o valor_unitário recalcular o total
+ /*
+ update venda set valor_unitario =  valor_unitario * 0.95   -- desconto de 5%   
+ where descricao = "coca cola 2 litros" ;                               
+*/
+ select * from venda;                               
